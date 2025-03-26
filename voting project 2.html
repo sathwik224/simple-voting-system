@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple voting system</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 25px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+           border: 20px solid black;
+            border-radius: 10px;
+            background-color: #9045ec;
+            padding: 10px;
+            margin: auto;
+            height: 432px;
+            width: 60%;
+        }
+
+        .collages {
+            /* border: 2px solid black;
+            background-color: rgb(221, 255, 0); */
+            height: 250px;
+            width: 23%;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .collegeLogo {
+            border: 8px solid red;
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin: 5px auto;
+            border-radius: 10px;
+        }
+
+        .vote {
+            width: 100%;
+            height: 50px;
+            padding: 5px;
+            border: 2px solid black;
+            background-color: rgb(220, 216, 226);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .vote {
+            width: 100%;
+            height: 50px;
+            padding: 5px;
+            margin: 12px auto;
+            border: 2px solid black;
+            background-color: rgb(205 233 55);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .vote:hover {
+            color: rgb(186, 186, 170);
+        }
+
+        .votes {
+            margin-left: 35px;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        #showResult {
+            width: 50%;
+            height: 50px;
+            padding: 5px;
+            margin: auto;
+            border: 2px solid black;
+            background-color: #e6ed0ad1;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #showResult:hover {
+            color: rgb(154, 154, 137);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simple Voting System</h1>
+    <div class="container" id="ZX">
+        <div class="collages">
+            <img class="collegeLogo" src="C:\Users\sathw\OneDrive\Pictures\Sathwik photos\project photos\kmit.jpg" alt="image is not loaded">
+            <button onclick="change();" id="Kmitvote" class="vote">Vote</button>
+            <p id="KmitResult" class="votes">Votes: </p>
+           
+        </div>
+        <div class="collages">
+            <img class="collegeLogo" src="C:\Users\sathw\OneDrive\Pictures\Sathwik photos\project photos\Ngit.jpg" alt="image is not loaded">
+            <button onclick="change();" id="Ngitvote" class="vote">Vote</button>
+            <p id="NgitResult" class="votes">Votes: </p>
+        </div>
+        <div class="collages">
+            <img class="collegeLogo" src="C:\Users\sathw\OneDrive\Pictures\Sathwik photos\project photos\Kmec logo.jpg" alt="image is not loaded">
+            <button onclick="change();" id="Kmecvote" class="vote">Vote</button>
+            <p id="KmecResult" class="votes">Votes: </p>
+        </div>
+        <div class="collages">
+            <img class="collegeLogo" src="C:\Users\sathw\OneDrive\Pictures\Sathwik photos\project photos\Kmec.jpg" alt="image is not loaded">
+            <button onclick="change();" id="Kmcevote" class="vote">Vote</button>
+            <p id="KmceResult" class="votes">Votes: </p>
+        </div>
+        <button onclick="change();" id="showResult">Show Election Result</button>
+    </div>
+    <script>
+        let Kmit_votes = 0;
+        let Ngit_votes = 0;
+        let Kmec_votes = 0;
+        let Kmce_votes = 0;
+        let Kmit_result = document.getElementById("KmitResult");
+        let Ngit_result = document.getElementById("NgitResult");
+        let Kmec_result = document.getElementById("KmecResult");
+        let Kmce_result = document.getElementById("KmceResult");
+
+        document.getElementById("Kmitvote").addEventListener("click", () => {
+            Kmit_votes++;
+            Kmit_result.innerHTML = "Votes: " + Kmit_votes;
+        })
+        document.getElementById("Ngitvote").addEventListener("click", () => {
+            Ngit_votes++;
+            Ngit_result.innerHTML = "Votes: " + Ngit_votes;
+        })
+        document.getElementById("Kmecvote").addEventListener("click", () => {
+            Kmec_votes++;
+            Kmec_result.innerHTML = "Votes: " + Kmec_votes;
+        })
+        document.getElementById("Kmcevote").addEventListener("click", () => {
+            Kmce_votes++;
+            Kmce_result.innerHTML = "Votes: " + Kmce_votes;
+        })
+
+        document.getElementById("showResult").addEventListener("click", () => {
+            if (Kmit_votes > Ngit_votes && Kmit_votes > Kmec_votes && Kmit_votes > Kmce_votes) {
+                Kmit_result.innerHTML =  "Kmit is the best college";
+                Ngit_result.innerHTML = "";
+                Kmec_result.innerHTML = "";
+                Kmce_result.innerHTML = "";
+            } else if (Ngit_votes > Kmec_votes && Ngit_votes > Kmce_votes && Ngit_votes > Kmit_votes) {
+                Kmit_result.innerHTML = " ";
+                Ngit_result.innerHTML = " Ngit is the best college";
+                Kmec_result.innerHTML = " ";
+                Kmce_result.innerHTML = " ";
+            } else if (Kmec_votes > Kmce_votes && Kmec_votes > Ngit_votes && Kmec_votes > Kmit_votes) {
+                Kmit_result.innerHTML = "";
+                Ngit_result.innerHTML = "";
+                Kmec_result.innerHTML = "KMEC IS THE BEST COLLEGE";
+                Kmce_result.innerHTML = "";
+            } else if (Kmce_votes > Ngit_votes && Kmce_votes > Kmec_votes && Kmce_votes > Kmit_votes) {
+                Kmit_result.innerHTML = "";
+                Ngit_result.innerHTML = "";
+                Kmec_result.innerHTML = "";
+                Kmce_result.innerHTML = " Kmce is the best college";
+            }
+            else {
+                Kmit_result.innerHTML = " NO Result";
+                Ngit_result.innerHTML = " NO Result";
+                Kmec_result.innerHTML = " NO Result";
+                Kmce_result.innerHTML = " NO Result";
+            }
+            
+        })
+        
+{
+        function getRandomColor(){
+const letters = "0123456789ABCDEF";
+let color = "#";
+for (let i=0;i<6;i++)
+{
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+function change()
+{
+document.getElementById("ZX").style.backgroundColor = getRandomColor();
+}
+}
+
+
+
+    
+    </script>
+</body>
+
+</html>
